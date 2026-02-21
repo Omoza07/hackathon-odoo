@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'   
 import { AuthProvider } from '@/lib/auth-context'
 import 'leaflet/dist/leaflet.css'
-import '../styles/globals.css'
+import './globals.css'
 
 const geist = Geist({
   subsets: ['latin'],

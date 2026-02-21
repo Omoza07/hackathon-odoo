@@ -1,3 +1,5 @@
+/* ================= INTERFACES ================= */
+
 export interface Vehicle {
   id: string
   name: string
@@ -112,63 +114,11 @@ export const vehicles: Vehicle[] = [
     lastMaintenanceDate: '2025-01-20',
     nextMaintenanceDate: '2025-04-20',
     location: { lat: 19.076, lng: 72.8777 },
-    currentDriver: 'd002',
+    currentDriver: 'd001',
     capacity: 1200,
     utilization: 85,
     health: 98,
-  },
-  {
-    id: 'v003',
-    name: 'Truck Bangalore Premium',
-    licensePlate: 'KA-03-AC-3003',
-    model: 'Swaraj Mazda T3000',
-    year: 2021,
-    type: 'truck',
-    status: 'maintenance',
-    fuelLevel: 45,
-    mileage: 99500,
-    lastMaintenanceDate: '2024-12-10',
-    nextMaintenanceDate: '2025-03-10',
-    location: { lat: 12.9716, lng: 77.5946 },
-    capacity: 2800,
-    utilization: 0,
-    health: 72,
-  },
-  {
-    id: 'v004',
-    name: 'Van Kolkata Connect',
-    licensePlate: 'WB-04-AD-4004',
-    model: 'Mahindra Bolero Pik-Up',
-    year: 2023,
-    type: 'van',
-    status: 'active',
-    fuelLevel: 91,
-    mileage: 25180,
-    lastMaintenanceDate: '2025-01-25',
-    nextMaintenanceDate: '2025-04-25',
-    location: { lat: 22.5726, lng: 88.3639 },
-    currentDriver: 'd003',
-    capacity: 1000,
-    utilization: 78,
-    health: 99,
-  },
-  {
-    id: 'v005',
-    name: 'Truck Hyderabad Fleet',
-    licensePlate: 'TG-05-AE-5005',
-    model: 'Force Traveller 3350',
-    year: 2022,
-    type: 'truck',
-    status: 'idle',
-    fuelLevel: 30,
-    mileage: 62400,
-    lastMaintenanceDate: '2025-01-10',
-    nextMaintenanceDate: '2025-04-10',
-    location: { lat: 17.385, lng: 78.4867 },
-    capacity: 2400,
-    utilization: 0,
-    health: 88,
-  },
+  }
 ]
 
 /* ================= DRIVERS ================= */
@@ -189,16 +139,45 @@ export const drivers: Driver[] = [
     accidents: 0,
     violations: 0,
     hoursWorked: 480,
-  },
+  }
 ]
 
 /* ================= TRIPS ================= */
 
-export const trips: Trip[] = []
+export const trips: Trip[] = [
+  {
+    id: 't001',
+    vehicleId: 'v001',
+    driverId: 'd001',
+    status: 'scheduled',
+    startLocation: { lat: 28.6139, lng: 77.209, address: 'Delhi Warehouse' },
+    endLocation: { lat: 19.076, lng: 72.8777, address: 'Mumbai Hub' },
+    scheduledStart: '2026-02-22T08:00:00Z',
+    estimatedEnd: '2026-02-23T02:00:00Z',
+    distance: 1400,
+    estimatedDuration: 18,
+    cargoType: 'Electronics',
+    cargoWeight: 1200,
+    revenue: 85000,
+    efficiency: 93,
+  }
+]
 
-/* ================= ALERTS ================= */
+/* ================= MAINTENANCE ================= */
 
-export const maintenanceAlerts: MaintenanceAlert[] = []
+export const maintenanceAlerts: MaintenanceAlert[] = [
+  {
+    id: 'm001',
+    vehicleId: 'v001',
+    type: 'oil-change',
+    severity: 'medium',
+    description: 'Engine oil replacement due',
+    dueDate: '2026-03-01',
+    status: 'pending',
+    cost: 6000,
+    createdAt: '2026-02-18',
+  }
+]
 
 /* ================= ANALYTICS ================= */
 
@@ -209,7 +188,7 @@ export const analytics: Analytics = {
   averageEfficiency: 94.2,
   fuelCost: 425000,
   revenue: 2850000,
-  activeVehicles: 3,
+  activeVehicles: 2,
   safetyIncidents: 2,
   maintenanceCost: 195000,
   totalUtilization: 86,
