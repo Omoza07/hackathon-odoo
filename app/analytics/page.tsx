@@ -8,7 +8,7 @@ import { formatNumber, formatCurrency } from '@/lib/date-utils'
 import {
   TrendingUp,
   Zap,
-  DollarSign,
+  IndianRupee,   // ✅ changed from DollarSign
   AlertTriangle,
   Truck,
 } from 'lucide-react'
@@ -19,7 +19,6 @@ function AnalyticsContent() {
     100
   ).toFixed(1)
 
-  // Calculate average metrics from data
   const avgUtilization = (
     vehicles.reduce((sum, v) => sum + v.utilization, 0) / vehicles.length
   ).toFixed(1)
@@ -46,6 +45,7 @@ function AnalyticsContent() {
           color="blue"
           trend={8}
         />
+
         <StatCard
           title="Completion Rate"
           value={`${completionRate}%`}
@@ -53,6 +53,7 @@ function AnalyticsContent() {
           color="green"
           trend={5}
         />
+
         <StatCard
           title="Total Distance"
           value={`${(analytics.totalDistance / 1000).toFixed(1)}k`}
@@ -61,13 +62,16 @@ function AnalyticsContent() {
           color="blue"
           trend={12}
         />
+
+        {/* ✅ Revenue card fixed */}
         <StatCard
           title="Revenue"
           value={formatCurrency(analytics.revenue)}
-          icon={<DollarSign className="w-5 h-5" />}
+          icon={<IndianRupee className="w-5 h-5" />}
           color="green"
           trend={15}
         />
+
         <StatCard
           title="Avg Efficiency"
           value={`${analytics.averageEfficiency.toFixed(1)}%`}
@@ -75,6 +79,7 @@ function AnalyticsContent() {
           color="blue"
           trend={3}
         />
+
         <StatCard
           title="Safety Incidents"
           value={analytics.safetyIncidents}
@@ -86,12 +91,15 @@ function AnalyticsContent() {
 
       {/* Detailed Metrics */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
         {/* Fleet Metrics */}
         <div className="bg-card border border-border rounded-lg p-6">
           <h2 className="text-lg font-semibold text-foreground mb-6">
             Fleet Metrics
           </h2>
+
           <div className="space-y-4">
+
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Average Utilization</span>
               <span className="font-bold text-foreground">{avgUtilization}%</span>
@@ -117,8 +125,7 @@ function AnalyticsContent() {
             <div className="flex items-center justify-between mt-6">
               <span className="text-muted-foreground">Active Vehicles</span>
               <span className="font-bold text-foreground">
-                {vehicles.filter((v) => v.status === 'active').length}/
-                {vehicles.length}
+                {vehicles.filter((v) => v.status === 'active').length}/{vehicles.length}
               </span>
             </div>
             <div className="w-full bg-border rounded-full h-2">
@@ -129,15 +136,18 @@ function AnalyticsContent() {
                 }}
               />
             </div>
+
           </div>
         </div>
 
-        {/* Cost Breakdown */}
+        {/* Cost Analysis */}
         <div className="bg-card border border-border rounded-lg p-6">
           <h2 className="text-lg font-semibold text-foreground mb-6">
             Cost Analysis
           </h2>
+
           <div className="space-y-4">
+
             <div className="flex items-center justify-between p-3 bg-accent/5 rounded-lg">
               <span className="text-foreground">Fuel Costs</span>
               <span className="font-bold text-orange-500">
@@ -173,8 +183,10 @@ function AnalyticsContent() {
                 )}
               </span>
             </div>
+
           </div>
         </div>
+
       </div>
     </MainLayout>
   )

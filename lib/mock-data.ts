@@ -78,6 +78,8 @@ export interface Analytics {
   totalUtilization: number
 }
 
+/* ================= VEHICLES ================= */
+
 export const vehicles: Vehicle[] = [
   {
     id: 'v001',
@@ -109,7 +111,7 @@ export const vehicles: Vehicle[] = [
     mileage: 45670,
     lastMaintenanceDate: '2025-01-20',
     nextMaintenanceDate: '2025-04-20',
-    location: { lat: 19.0760, lng: 72.8777 },
+    location: { lat: 19.076, lng: 72.8777 },
     currentDriver: 'd002',
     capacity: 1200,
     utilization: 85,
@@ -162,12 +164,14 @@ export const vehicles: Vehicle[] = [
     mileage: 62400,
     lastMaintenanceDate: '2025-01-10',
     nextMaintenanceDate: '2025-04-10',
-    location: { lat: 17.3850, lng: 78.4867 },
+    location: { lat: 17.385, lng: 78.4867 },
     capacity: 2400,
     utilization: 0,
     health: 88,
   },
 ]
+
+/* ================= DRIVERS ================= */
 
 export const drivers: Driver[] = [
   {
@@ -186,195 +190,17 @@ export const drivers: Driver[] = [
     violations: 0,
     hoursWorked: 480,
   },
-  {
-    id: 'd002',
-    name: 'Priya Sharma',
-    email: 'priya.sharma@fleetflow.com',
-    phone: '+91 98765 43211',
-    licenseNumber: 'DL-2018-045',
-    status: 'active',
-    totalTrips: 389,
-    totalMiles: 164000,
-    safetyScore: 98,
-    rating: 4.9,
-    tripsThisMonth: 32,
-    accidents: 0,
-    violations: 0,
-    hoursWorked: 520,
-  },
-  {
-    id: 'd003',
-    name: 'Arun Patel',
-    email: 'arun.patel@fleetflow.com',
-    phone: '+91 98765 43212',
-    licenseNumber: 'DL-2020-082',
-    status: 'on-break',
-    totalTrips: 156,
-    totalMiles: 67700,
-    safetyScore: 92,
-    rating: 4.6,
-    tripsThisMonth: 12,
-    accidents: 1,
-    violations: 0,
-    hoursWorked: 320,
-  },
-  {
-    id: 'd004',
-    name: 'Neha Singh',
-    email: 'neha.singh@fleetflow.com',
-    phone: '+91 98765 43213',
-    licenseNumber: 'DL-2017-034',
-    status: 'off-duty',
-    totalTrips: 421,
-    totalMiles: 206800,
-    safetyScore: 94,
-    rating: 4.7,
-    tripsThisMonth: 0,
-    accidents: 0,
-    violations: 1,
-    hoursWorked: 0,
-  },
-  {
-    id: 'd005',
-    name: 'Vikram Desai',
-    email: 'vikram.desai@fleetflow.com',
-    phone: '+91 98765 43214',
-    licenseNumber: 'DL-2021-056',
-    status: 'active',
-    totalTrips: 287,
-    totalMiles: 122400,
-    safetyScore: 89,
-    rating: 4.5,
-    tripsThisMonth: 25,
-    accidents: 1,
-    violations: 1,
-    hoursWorked: 440,
-  },
 ]
 
-export const trips: Trip[] = [
-  {
-    id: 't001',
-    vehicleId: 'v001',
-    driverId: 'd001',
-    status: 'in-progress',
-    startLocation: {
-      lat: 28.6139,
-      lng: 77.209,
-      address: 'Delhi Central Warehouse',
-    },
-    endLocation: {
-      lat: 28.7041,
-      lng: 77.1025,
-      address: 'Ghaziabad Distribution Hub',
-    },
-    scheduledStart: '2025-02-21T08:00:00Z',
-    actualStart: '2025-02-21T08:15:00Z',
-    estimatedEnd: '2025-02-21T10:30:00Z',
-    distance: 56,
-    estimatedDuration: 2.5,
-    cargoType: 'Electronics',
-    cargoWeight: 2200,
-    revenue: 8500,
-    efficiency: 94,
-  },
-  {
-    id: 't002',
-    vehicleId: 'v002',
-    driverId: 'd002',
-    status: 'completed',
-    startLocation: {
-      lat: 19.0760,
-      lng: 72.8777,
-      address: 'Mumbai Central Hub',
-    },
-    endLocation: {
-      lat: 19.2183,
-      lng: 72.9781,
-      address: 'Mumbai Navi Warehouse',
-    },
-    scheduledStart: '2025-02-21T06:00:00Z',
-    actualStart: '2025-02-21T06:05:00Z',
-    estimatedEnd: '2025-02-21T08:00:00Z',
-    actualEnd: '2025-02-21T07:55:00Z',
-    distance: 24,
-    estimatedDuration: 2,
-    cargoType: 'Furniture',
-    cargoWeight: 1100,
-    revenue: 5200,
-    efficiency: 98,
-  },
-  {
-    id: 't003',
-    vehicleId: 'v004',
-    driverId: 'd003',
-    status: 'scheduled',
-    startLocation: {
-      lat: 22.5726,
-      lng: 88.3639,
-      address: 'Kolkata Warehouse',
-    },
-    endLocation: {
-      lat: 22.6345,
-      lng: 88.4405,
-      address: 'Howrah Distribution Center',
-    },
-    scheduledStart: '2025-02-21T14:00:00Z',
-    estimatedEnd: '2025-02-21T16:30:00Z',
-    distance: 40,
-    estimatedDuration: 2.5,
-    cargoType: 'Perishables',
-    cargoWeight: 850,
-    revenue: 6000,
-    efficiency: 0,
-  },
-]
+/* ================= TRIPS ================= */
 
-export const maintenanceAlerts: MaintenanceAlert[] = [
-  {
-    id: 'ma001',
-    vehicleId: 'v003',
-    type: 'oil-change',
-    severity: 'critical',
-    description: 'Oil change overdue - scheduled maintenance required',
-    dueDate: '2025-02-15',
-    status: 'in-progress',
-    cost: 4500,
-    createdAt: '2025-02-10',
-  },
-  {
-    id: 'ma002',
-    vehicleId: 'v001',
-    type: 'tire-rotation',
-    severity: 'medium',
-    description: 'Tire rotation recommended for even wear',
-    dueDate: '2025-03-15',
-    status: 'pending',
-    cost: 6200,
-    createdAt: '2025-02-20',
-  },
-  {
-    id: 'ma003',
-    vehicleId: 'v005',
-    type: 'inspection',
-    severity: 'high',
-    description: 'Annual safety inspection required',
-    dueDate: '2025-02-28',
-    status: 'pending',
-    cost: 8700,
-    createdAt: '2025-02-01',
-  },
-  {
-    id: 'ma004',
-    vehicleId: 'v002',
-    type: 'warning',
-    severity: 'low',
-    description: 'Brake fluid replacement scheduled',
-    dueDate: '2025-04-01',
-    status: 'pending',
-    createdAt: '2025-02-15',
-  },
-]
+export const trips: Trip[] = []
+
+/* ================= ALERTS ================= */
+
+export const maintenanceAlerts: MaintenanceAlert[] = []
+
+/* ================= ANALYTICS ================= */
 
 export const analytics: Analytics = {
   totalTrips: 1247,
